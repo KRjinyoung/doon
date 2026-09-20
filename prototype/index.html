@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>doon — 명령 바 프로토타입</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%236ea8ff'/%3E%3Ctext x='16' y='22' font-size='18' text-anchor='middle' fill='%230e1013' font-family='sans-serif'%3Ed%3C/text%3E%3C/svg%3E" />
+<link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main class="stage">
+    <section class="pitch">
+      <h1>doon · 주소창을 명령 바로 바꾸면</h1>
+      <p>
+        아래는 진짜 브라우저가 아니라, 주소창 동작만 그대로 구현한 프로토타입입니다.
+        <kbd>Ctrl</kbd>+<kbd>L</kbd> (또는 <kbd>⌘</kbd>+<kbd>L</kbd>, <kbd>/</kbd>) 로 명령 바를 열어보세요.
+        입력하는 동안 <b>"지금 Enter를 치면 무슨 일이 일어나는지"</b>가 항상 한 줄로 떠 있습니다.
+      </p>
+    </section>
+
+    <section class="window">
+      <div class="titlebar">
+        <div class="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i></div>
+      </div>
+
+      <div class="tabstrip" id="tabstrip"></div>
+
+      <div class="addressbar">
+        <div class="nav-buttons">
+          <button class="icon-btn" title="뒤로">←</button>
+          <button class="icon-btn" title="앞으로">→</button>
+          <button class="icon-btn" title="새로고침">↻</button>
+        </div>
+        <div class="chips" id="chips" title="주소 조각을 눌러 켜고 끌 수 있습니다"></div>
+        <div class="address-actions">
+          <button class="ghost-btn" id="copy-clean">깨끗한 주소 복사</button>
+          <button class="ghost-btn" id="open-bar">명령 바 ⌘L</button>
+        </div>
+      </div>
+
+      <div class="viewport" id="viewport">
+        <div class="page-card">
+          <h2 id="page-title">페이지</h2>
+          <div class="url" id="page-url"></div>
+          <p class="note" id="page-note"></p>
+        </div>
+
+        <div class="hint-grid" id="hints"></div>
+
+        <p class="legend">
+          <b>규칙 1.</b> Enter는 화면에 적힌 해석만 실행합니다. 입력을 가로채는 자동완성이 없습니다.<br />
+          <b>규칙 2.</b> 이미 열려 있는 페이지는 새 탭이 아니라 그 탭으로 갑니다. (강제로 새 탭은 <kbd>Shift</kbd>+<kbd>Enter</kbd>)<br />
+          <b>규칙 3.</b> 내 탭·북마크·기록이 웹 검색보다 항상 먼저입니다. 웹 검색은 사라지지 않고 늘 마지막 줄에 있습니다.
+        </p>
+
+        <div class="overlay" id="overlay" hidden>
+          <div class="commandbar" role="dialog" aria-label="명령 바">
+            <input id="command-input" placeholder="주소, 검색어, 또는 ! @ > 로 시작" autocomplete="off" spellcheck="false" />
+            <div class="readout">
+              <span class="explain" id="explain"></span>
+              <span class="reason" id="reason"></span>
+            </div>
+            <div class="results" id="results" role="listbox"></div>
+            <footer>
+              <span><kbd>↑</kbd><kbd>↓</kbd> 이동</span>
+              <span><kbd>Enter</kbd> 실행</span>
+              <span><kbd>Shift</kbd>+<kbd>Enter</kbd> 새 탭 강제</span>
+              <span><kbd>Tab</kbd> 채우기</span>
+              <span><kbd>Esc</kbd> 닫기</span>
+            </footer>
+          </div>
+        </div>
+
+        <div class="toast" id="toast" hidden></div>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

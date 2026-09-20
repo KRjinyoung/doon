@@ -1,0 +1,14 @@
+{
+  "name": "doon",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "주소창부터 다시 만든 브라우저 — 명령 바 프로토타입",
+  "scripts": {
+    "dev": "node scripts/serve.js",
+    "test": "node --test test/*.test.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
