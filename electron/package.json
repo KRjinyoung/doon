@@ -2,7 +2,7 @@
   "name": "doon-shell",
   "version": "0.0.1",
   "private": true,
-  "description": "doon — 확정된 결정만으로 만든 최소 실행체 (프레임 없음 · 브라우저 크롬 없음)",
+  "description": "Doon — 확정된 결정만으로 만든 최소 실행체 (프레임 없음 · 브라우저 크롬 없음)",
   "main": "main.js",
   "scripts": {
     "start": "electron ."

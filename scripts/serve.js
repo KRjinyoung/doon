@@ -45,5 +45,5 @@ const server = createServer(async (request, response) => {
 });
 
 server.listen(PORT, () => {
-  console.log(`doon 프로토타입 → http://localhost:${PORT}/`);
+  console.log(`Doon 프로토타입 → http://localhost:${PORT}/`);
 });
